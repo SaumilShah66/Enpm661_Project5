@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="start" default="[-4,-3,120]"/>
+  <arg name="end" default="[0,-3,0]"/>
+  <arg name="clearance" default="0.01"/>
+  <arg name="RPM" default="[10,10]"/>  
+    <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+        <arg name="world_file" value="$(find planner)/world/map.world"/>
+    </include>
+    
+<arg name="x"/>
+<node name="setPos" pkg="planner" type="setPos.py" args="--Start=$(arg start)  --End=$(arg end) --Clearance=$(arg clearance) --RPM=$(arg RPM)" output="screen"/>
+
+</launch>
